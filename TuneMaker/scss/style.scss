@@ -1,0 +1,137 @@
+@use "ext";
+
+body {
+	margin: 0;
+	// overflow: hidden;
+}
+
+.inset {
+	z-index: 1;
+}
+
+:not(.inset) {
+	z-index: 2;
+}
+
+header {
+	height: 50px;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: ext.$theme-blue-dark;
+	box-shadow: 0px 10px 10px ext.$theme-black-dark;
+	padding-left: 25px;
+	p {
+		font-family: ext.$theme-font-title;
+		color: ext.$theme-white;
+		font-weight: 900;
+	}
+}
+
+p {
+	cursor: default;
+}
+
+#board {
+	height: calc(60vh - 25px);
+	width: 100%;
+	top: 50px;
+	position: relative;
+	background: ext.$theme-black-medium;
+}
+
+#controls {
+	height: calc(40vh - 25px);
+	width: 100%;
+	bottom: 0;
+	position: absolute;
+	box-shadow: 0px -10px 10px ext.$theme-black-dark;
+	display: flex;
+	.control-section {
+		position: relative;
+		box-sizing: border-box;
+	}
+	#output {
+		flex: 3;
+		padding: 25px;
+		background: ext.$theme-gray;
+		color: ext.$theme-white;
+		font-family: ext.$theme-font-monospace;
+		#copy-output {
+			padding: 8px;
+			background: ext.$theme-blue-light;
+			cursor: pointer;
+			border-radius: 3px;
+			text-align: center;
+			line-height: 30px;
+			height: 30px;
+			@extend %center-x;
+			bottom: 15px;
+			color: ext.$theme-white;
+			font-family: ext.$theme-font-paragraph;
+			width: 120px;
+			box-shadow: 0px 0px 10px ext.$theme-black-dark;
+		}
+	}
+	#settings {
+		background: ext.$theme-black-medium;
+		flex: 1;
+		height: 100%;
+		padding: 25px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto;
+		.setting-row {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			
+			p {
+				font-family: ext.$theme-font-subtitle;
+				color: ext.$theme-white;
+			}
+			.setting-button-wrap {
+				display: flex;
+				justify-content: space-evenly;
+				div {
+					font-family: ext.$theme-font-paragraph;
+					height: 30px;
+					cursor: pointer;
+					position: relative;
+					padding: 15px;
+					line-height: 30px;
+					&:hover {
+						background: ext.$theme-blue-light;
+						color: ext.$theme-black-light;
+					}
+				}
+			}
+			.setting-input-wrap {
+				display: flex;
+				justify-content: center;
+				input {
+					width: 80%;
+				}
+			}
+			.setting-range-wrap {
+				display: flex;
+				justify-content: center;
+				input {
+					width: 80%;
+				}
+			}
+		}
+	}
+}
+
+.setting-button-active {
+	background: ext.$theme-blue-light;
+	color: ext.$theme-black-light;
+}
+
+.setting-button:not(.setting-button-active) {
+	background: ext.$theme-black-light;
+	color: ext.$theme-blue-light;
+}

@@ -9,9 +9,43 @@
 </head>
 <body>
 
+	<header>
+		<p>Desmos Tune Maker Pro SuperPlus Premium Edition</p>
+	</header>
+
+	<div id="board" class="inset"></div>
+
+	<div id="controls">
+		<div id="settings" class="control-section">
+			<div class="setting-row">
+				<p>Sound Mode</p>
+				<div class="setting-button-wrap">
+					<div id="mode-drone" class="setting-button setting-button-active">Drone</div>
+					<div id="mode-sine" class="setting-button">Sine Wave</div>
+				</div>
+			</div>
+			<div class="setting-row" title="Actual BPM of the original song">
+				<p>BPM</p>
+				<div class="setting-input-wrap">
+					<input type="number" id="bpm-input" value="60" min="30" max="200" step="1">
+				</div>
+			</div>
+			<div class="setting-row" title="Match this setting with Desmos">
+				<p id="playback-speed-title">Playback Speed (1x)</p>
+				<div class="setting-range-wrap">
+					<input type="range" id="playback-input" value="0" min="-5" max="3" step="1">
+					<!-- The value from this input is the power of 2 that becomes the playback speed -->
+				</div>
+			</div>
+		</div>
+		<div id="output" class="control-section">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			<div id="copy-output">Copy Output</div>
+		</div>
+	</div>
 
 </body>
 
-<script src="javascript/script.js"></script>
+<script src="javascript/script.js" type="module"></script>
 
 </html>

@@ -4,6 +4,8 @@
 $name - variable
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap');
+
 %center {
     position: absolute;
     left: 0;
@@ -39,3 +41,4 @@ $theme-font-title: "Miriam Libre", "Segoe UI", sans-serif, monospace;
 $theme-font-button: "Miriam Libre", "Segoe UI", sans-serif, monospace;
 $theme-font-subtitle: "Montserrat", sans-serif;
 $theme-font-paragraph: "Ubuntu", sans-serif;
+$theme-font-monospace: "Source Code Pro", Courier, monospace, 
