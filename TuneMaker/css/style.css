@@ -4,6 +4,15 @@
 $name - variable
 */
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap");
+.setting-row-wrap .setting-row .setting-button-wrap div svg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
 #controls #output #copy-output {
   position: absolute;
   left: 0;
@@ -11,8 +20,19 @@ $name - variable
   margin: auto;
 }
 
+#board #board-note-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
 body {
   margin: 0;
+}
+
+*:not(#output) {
+  user-select: none;
 }
 
 .inset {
@@ -32,11 +52,14 @@ header {
   background: #006b8c;
   box-shadow: 0px 10px 10px #070707;
   padding-left: 25px;
+  display: flex;
+  align-items: center;
 }
 header p {
   font-family: "Miriam Libre", "Segoe UI", sans-serif, monospace;
   color: #e8e8e8;
   font-weight: 900;
+  font-size: 20px;
 }
 
 p {
@@ -50,6 +73,24 @@ p {
   position: relative;
   background: #191919;
 }
+#board #board-note-wrap {
+  height: 80%;
+  width: 100%;
+}
+#board #board-note-wrap .note-row {
+  height: calc(100% / 14);
+  cursor: pointer;
+  color: #e8e8e8;
+  padding-left: 15px;
+  box-sizing: border-box;
+  font-family: "Miriam Libre", "Segoe UI", sans-serif, monospace;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+}
+#board #board-note-wrap .note-row:hover {
+  filter: brightness(80%);
+}
 
 #controls {
   height: calc(40vh - 25px);
@@ -62,6 +103,10 @@ p {
 #controls .control-section {
   position: relative;
   box-sizing: border-box;
+  background: #191919;
+}
+#controls #board-options {
+  flex: 1;
 }
 #controls #output {
   flex: 3;
@@ -69,68 +114,97 @@ p {
   background: #333;
   color: #e8e8e8;
   font-family: "Source Code Pro", Courier, monospace;
+  user-select: text;
 }
 #controls #output #copy-output {
   padding: 8px;
-  background: #00b7ff;
+  background: #191919;
   cursor: pointer;
   border-radius: 3px;
   text-align: center;
   line-height: 30px;
   height: 30px;
   bottom: 15px;
-  color: #e8e8e8;
+  color: #00b7ff;
+  font-weight: 700;
   font-family: "Ubuntu", sans-serif;
   width: 120px;
   box-shadow: 0px 0px 10px #070707;
+}
+#controls #output #copy-output:hover {
+  background: #282828;
+  color: #00b7ff;
 }
 #controls #settings {
   background: #191919;
   flex: 1;
   height: 100%;
-  padding: 25px;
-  position: relative;
+}
+
+.setting-row-wrap {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  padding: 25px;
+  position: relative;
 }
-#controls #settings .setting-row {
+.setting-row-wrap .setting-row {
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
 }
-#controls #settings .setting-row p {
+.setting-row-wrap .setting-row p {
   font-family: "Montserrat", sans-serif;
   color: #e8e8e8;
+  font-size: 12px;
+  font-weight: 500;
 }
-#controls #settings .setting-row .setting-button-wrap {
+.setting-row-wrap .setting-row .setting-button-wrap {
   display: flex;
-  justify-content: space-evenly;
+  width: 100%;
+  left: 0;
+  right: 0;
+  padding-right: 25px;
+  padding-left: 25px;
+  box-sizing: border-box;
 }
-#controls #settings .setting-row .setting-button-wrap div {
+.setting-row-wrap .setting-row .setting-button-wrap div {
   font-family: "Ubuntu", sans-serif;
   height: 30px;
   cursor: pointer;
   position: relative;
-  padding: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   line-height: 30px;
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
 }
-#controls #settings .setting-row .setting-button-wrap div:hover {
-  background: #00b7ff;
-  color: #282828;
+.setting-row-wrap .setting-row .setting-button-wrap div svg {
+  color: #00b7ff;
+  height: 75%;
 }
-#controls #settings .setting-row .setting-input-wrap {
+.setting-row-wrap .setting-row .setting-button-wrap div:hover:not(.setting-button-active) {
+  background: #333;
+}
+.setting-row-wrap .setting-row .setting-input-wrap {
   display: flex;
   justify-content: center;
 }
-#controls #settings .setting-row .setting-input-wrap input {
+.setting-row-wrap .setting-row .setting-input-wrap input {
   width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-family: "Ubuntu", sans-serif;
+  outline: none;
 }
-#controls #settings .setting-row .setting-range-wrap {
+.setting-row-wrap .setting-row .setting-range-wrap {
   display: flex;
   justify-content: center;
 }
-#controls #settings .setting-row .setting-range-wrap input {
+.setting-row-wrap .setting-row .setting-range-wrap input {
   width: 80%;
 }
 
@@ -142,4 +216,9 @@ p {
 .setting-button:not(.setting-button-active) {
   background: #282828;
   color: #00b7ff;
+}
+
+.note-row {
+  width: 100%;
+  position: relative;
 }

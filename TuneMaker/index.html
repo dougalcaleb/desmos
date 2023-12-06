@@ -13,12 +13,15 @@
 		<p>Desmos Tune Maker Pro SuperPlus Premium Edition</p>
 	</header>
 
-	<div id="board" class="inset"></div>
+	<div id="board" class="inset">
+		<div id="board-note-wrap"></div>
+		<div id="board-control-wrap"></div>
+	</div>
 
 	<div id="controls">
-		<div id="settings" class="control-section">
+		<div id="settings" class="control-section setting-row-wrap">
 			<div class="setting-row">
-				<p>Sound Mode</p>
+				<p>SOUND MODE</p>
 				<div class="setting-button-wrap">
 					<div id="mode-drone" class="setting-button setting-button-active">Drone</div>
 					<div id="mode-sine" class="setting-button">Sine Wave</div>
@@ -31,10 +34,55 @@
 				</div>
 			</div>
 			<div class="setting-row" title="Match this setting with Desmos">
-				<p id="playback-speed-title">Playback Speed (1x)</p>
+				<p id="playback-speed-title">PLAYBACK SPEED (1x)</p>
 				<div class="setting-range-wrap">
 					<input type="range" id="playback-input" value="0" min="-5" max="3" step="1">
-					<!-- The value from this input is the power of 2 that becomes the playback speed -->
+				</div>
+			</div>
+		</div>
+		<div id="board-options" class="control-section setting-row-wrap">
+			<div class="setting-row">
+				<p>NOTE LENGTH</p>
+				<div class="setting-button-wrap">
+					<div id="note-whole" class="setting-button" title="Whole Note">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Whole Note</title><path  fill="currentColor"d="M12 15A2 2 0 1 1 10 17A2 2 0 0 1 12 15M12 13A4 4 0 1 0 16 17A4 4 0 0 0 12 13Z" /></svg>
+					</div>
+					<div id="note-dothalf" class="setting-button" title="Dotted Half Note">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Dotted Half Note</title><path fill="currentColor" d="M14 3H12V13.56A3.96 3.96 0 0 0 10 13A4 4 0 1 0 14 17V3M10 19A2 2 0 1 1 12 17A2 2 0 0 1 10 19M16.5 20A1.5 1.5 0 1 1 18 18.5A1.5 1.5 0 0 1 16.5 20Z" /></svg>
+					</div>
+					<div id="note-half" class="setting-button" title="Half Note">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Half Note</title><path fill="currentColor" d="M16 3H14V13.56A3.96 3.96 0 0 0 12 13A4 4 0 1 0 16 17V3M12 19A2 2 0 1 1 14 17A2 2 0 0 1 12 19Z" /></svg>
+					</div>
+					<div id="note-dotquarter" class="setting-button" title="Dotted Quarter Note">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Dotted Quarter Note</title><path fill="currentColor" d="M12 13V13.56A3.96 3.96 0 0 0 10 13A4 4 0 1 0 14 17V3H12M16.5 17A1.5 1.5 0 1 1 15 18.5A1.5 1.5 0 0 1 16.5 17Z" /></svg>
+					</div>
+					
+				</div>
+				<div class="setting-button-wrap">
+					<div id="note-quarter" class="setting-button" title="Quarter Note">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Quarter Note</title><path fill="currentColor" d="M14 3V13.56C13.41 13.21 12.73 13 12 13C9.79 13 8 14.79 8 17S9.79 21 12 21 16 19.21 16 17V3H14Z" /></svg>
+					</div>
+					<div id="note-doteighth" class="setting-button" title="Dotted Eighth Note">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Dotted Eighth Note</title><path fill="currentColor" d="M12 3V13.55A4 4 0 1 0 14 17V7H18V3M16.5 20A1.5 1.5 0 1 1 18 18.5A1.5 1.5 0 0 1 16.5 20Z" /></svg>
+					</div>
+					<div id="note-eighth" class="setting-button" title="Eighth Note">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Eighth Note</title><path fill="currentColor" d="M12 3V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V7H18V3H12Z" /></svg>
+					</div>
+					<div id="note-sixteenth" class="setting-button" title="Sixteenth Note">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Sixteenth Note</title><path fill="currentColor" d="M18 7V3H12V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V11H18V8H14V7H18Z" /></svg>
+					</div>
+				</div>
+				<!-- <div class="setting-button-wrap">
+					<div id="note-rest" class="setting-button" title="Quarter Note">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Quarter Note</title><path fill="currentColor" d="M14 3V13.56C13.41 13.21 12.73 13 12 13C9.79 13 8 14.79 8 17S9.79 21 12 21 16 19.21 16 17V3H14Z" /></svg>
+					</div>
+				</div> -->
+			</div>
+			<div class="setting-row">
+				<p>NOTE CONNECTION</p>
+				<div class="setting-button-wrap">
+					<div id="note-connected" class="setting-button">Connected</div>
+					<div id="note-disconnected" class="setting-button">Disconnected</div>
 				</div>
 			</div>
 		</div>

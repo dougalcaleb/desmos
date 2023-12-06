@@ -3,7 +3,13 @@ export class DataStore{
 		this.playback = 1;
 		this.mode = "drone";
 		this.bpm = 60;
-		
+		this.scale = 10;
+
+		this.tune = [];
+
+		this.sineCompression = 1e9;
+		this.sineFunc = `sin(${this.sineCompression}x) + `;
+
 		this.notes = {
 			"e": 1.01,
 			"f": 2,
@@ -27,18 +33,35 @@ export class DataStore{
 		
 			"rest": 15,
 		}
+
+		this.noteNames = [
+			["E", ""],
+			["F", ""],
+			["F&#9839;", "G&#9837;"],
+			["G", ""],
+			["G&#9839;", "A&#9837;"],
+			["A", ""],
+			["A&#9839;", "B&#9837;"],
+			["B", ""],
+			["C", ""],
+			["C&#9839;", "D&#9837;"],
+			["D", ""],
+			["D&#9839;", "E&#9837;"],
+			["E", ""],
+			["&#119101;", ""]
+		]
 		
 		this.noteLengths = {
-			"whole": float('%.3f'%(60000 / bpm / 1000 / (100 / scale) * 20 * speed * 2)),
-			"dothalf": float('%.3f'%(60000 / bpm / 2 / 1000 / (100 / scale) * 20 * speed * 2)) + float('%.3f'%(60000 / bpm / 4 / 1000 / (100 / scale) * 20 * speed * 2)),
-			"half": float('%.3f' % (60000 / bpm / 2 / 1000 / (100 / scale) * 20 * speed * 2)),
-			"dotquarter": float('%.3f'%(60000 / bpm / 4 / 1000 / (100 / scale) * 20 * speed * 2)) + float('%.3f'%(60000 / bpm / 8 / 1000 / (100 / scale) * 20 * speed * 2)),
-			"quarter": float('%.3f'%(60000 / bpm / 4 / 1000 / (100 / scale) * 20 * speed * 2)),
-			"8th": float('%.3f'%(60000 / bpm / 8 / 1000 / (100 / scale) * 20 * speed * 2)),
-			"16th": float('%.3f'%(60000 / bpm / 16 / 1000 / (100 / scale) * 20 * speed * 2)),
-			"32nd": float('%.3f'%(60000 / bpm / 32 / 1000 / (100 / scale) * 20 * speed * 2)),
+			"whole": Number((60000 / this.bpm / 1000 / (100 / this.scale) * 20 * this.playback * 2).toFixed(3)),
+			"dothalf": Number((60000 / this.bpm / 2 / 1000 / (100 / this.scale) * 20 * this.playback * 2).toFixed(3)) + Number((60000 / this.bpm / 4 / 1000 / (100 / this.scale) * 20 * this.playback * 2).toFixed(3)),
+			"half": Number((60000 / this.bpm / 2 / 1000 / (100 / this.scale) * 20 * this.playback * 2).toFixed(3)),
+			"dotquarter": Number((60000 / this.bpm / 4 / 1000 / (100 / this.scale) * 20 * this.playback * 2).toFixed(3)) + Number((60000 / this.bpm / 8 / 1000 / (100 / this.scale) * 20 * this.playback * 2).toFixed(3)),
+			"quarter": Number((60000 / this.bpm / 4 / 1000 / (100 / this.scale) * 20 * this.playback * 2).toFixed(3)),
+			"8th": Number((60000 / this.bpm / 8 / 1000 / (100 / this.scale) * 20 * this.playback * 2).toFixed(3)),
+			"16th": Number((60000 / this.bpm / 16 / 1000 / (100 / this.scale) * 20 * this.playback * 2).toFixed(3)),
+			"32nd": Number((60000 / this.bpm / 32 / 1000 / (100 / this.scale) * 20 * this.playback * 2).toFixed(3)),
 		
-			"notePause": float('%.3f'%(60000 / bpm / 64 / 1000 / scale * 10))
+			"pause": Number((60000 / this.bpm / 64 / 1000 / this.scale * 10).toFixed(3))
 		}
 	}
 

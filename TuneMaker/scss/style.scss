@@ -5,6 +5,10 @@ body {
 	// overflow: hidden;
 }
 
+*:not(#output) {
+	user-select: none;
+}
+
 .inset {
 	z-index: 1;
 }
@@ -22,10 +26,13 @@ header {
 	background: ext.$theme-blue-dark;
 	box-shadow: 0px 10px 10px ext.$theme-black-dark;
 	padding-left: 25px;
+	display: flex;
+	align-items: center;
 	p {
 		font-family: ext.$theme-font-title;
 		color: ext.$theme-white;
 		font-weight: 900;
+		font-size: 20px;
 	}
 }
 
@@ -39,6 +46,26 @@ p {
 	top: 50px;
 	position: relative;
 	background: ext.$theme-black-medium;
+	#board-note-wrap {
+		height: 80%;
+		width: 100%;
+		@extend %center-y;
+		.note-row {
+			height: calc(100% / 14);
+			cursor: pointer;
+			color: ext.$theme-white;
+			padding-left: 15px;
+			box-sizing: border-box;
+			font-family: ext.$theme-font-title;
+			font-weight: 900;
+			display: flex;
+			align-items: center;
+			&:hover {
+				filter: brightness(80%);
+			}
+		}
+	}
+	
 }
 
 #controls {
@@ -51,6 +78,10 @@ p {
 	.control-section {
 		position: relative;
 		box-sizing: border-box;
+		background: ext.$theme-black-medium;
+	}
+	#board-options {
+		flex: 1;
 	}
 	#output {
 		flex: 3;
@@ -58,9 +89,10 @@ p {
 		background: ext.$theme-gray;
 		color: ext.$theme-white;
 		font-family: ext.$theme-font-monospace;
+		user-select: text;
 		#copy-output {
 			padding: 8px;
-			background: ext.$theme-blue-light;
+			background: ext.$theme-black-medium;
 			cursor: pointer;
 			border-radius: 3px;
 			text-align: center;
@@ -68,63 +100,94 @@ p {
 			height: 30px;
 			@extend %center-x;
 			bottom: 15px;
-			color: ext.$theme-white;
+			color: ext.$theme-blue-light;
+			font-weight: 700;
 			font-family: ext.$theme-font-paragraph;
 			width: 120px;
 			box-shadow: 0px 0px 10px ext.$theme-black-dark;
+			&:hover {
+				background: ext.$theme-black-light;
+				color: ext.$theme-blue-light;
+			}
 		}
 	}
 	#settings {
 		background: ext.$theme-black-medium;
 		flex: 1;
 		height: 100%;
-		padding: 25px;
-		position: relative;
+	}
+}
+
+.setting-row-wrap {
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	padding: 25px;
+	position: relative;
+	.setting-row {
+		width: 100%;
 		display: flex;
 		flex-direction: column;
-		overflow-y: auto;
-		.setting-row {
-			width: 100%;
+		margin-bottom: 10px;
+		p {
+			font-family: ext.$theme-font-subtitle;
+			color: ext.$theme-white;
+			font-size: 12px;
+			font-weight: 500;
+		}
+		.setting-button-wrap {
 			display: flex;
-			flex-direction: column;
-			
-			p {
-				font-family: ext.$theme-font-subtitle;
-				color: ext.$theme-white;
-			}
-			.setting-button-wrap {
-				display: flex;
-				justify-content: space-evenly;
-				div {
-					font-family: ext.$theme-font-paragraph;
-					height: 30px;
-					cursor: pointer;
-					position: relative;
-					padding: 15px;
-					line-height: 30px;
-					&:hover {
-						background: ext.$theme-blue-light;
-						color: ext.$theme-black-light;
-					}
+			width: 100%;
+			left: 0;
+			right: 0;
+			padding-right: 25px;
+			padding-left: 25px;
+			box-sizing: border-box;
+			// justify-content: space-evenly;
+			div {
+				font-family: ext.$theme-font-paragraph;
+				height: 30px;
+				cursor: pointer;
+				position: relative;
+				padding-top: 5px;
+				padding-bottom: 5px;
+				line-height: 30px;
+				flex: 1;
+				text-align: center;
+				font-weight: 700;
+				svg {
+					color: ext.$theme-blue-light;
+					@extend %center;
+					height: 75%;
+				}
+				&:hover:not(.setting-button-active) {
+					background: ext.$theme-gray;
+					// color: ext.$theme-black-light;
 				}
 			}
-			.setting-input-wrap {
-				display: flex;
-				justify-content: center;
-				input {
-					width: 80%;
-				}
+		}
+		.setting-input-wrap {
+			display: flex;
+			justify-content: center;
+			input {
+				width: 80%;
+				padding: 10px;
+				border-radius: 5px;
+				border: none;
+				font-family: ext.$theme-font-paragraph;
+				outline: none;
 			}
-			.setting-range-wrap {
-				display: flex;
-				justify-content: center;
-				input {
-					width: 80%;
-				}
+		}
+		.setting-range-wrap {
+			display: flex;
+			justify-content: center;
+			input {
+				width: 80%;
 			}
 		}
 	}
 }
+
 
 .setting-button-active {
 	background: ext.$theme-blue-light;
@@ -134,4 +197,9 @@ p {
 .setting-button:not(.setting-button-active) {
 	background: ext.$theme-black-light;
 	color: ext.$theme-blue-light;
+}
+
+.note-row {
+	width: 100%;
+	position: relative;
 }
